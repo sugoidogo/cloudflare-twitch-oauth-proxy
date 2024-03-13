@@ -29,6 +29,10 @@ export default class SugoiAuthProvider {
         return this.#auth.getToken(...scopes).then(SugoiAuthProvider.#getTwurpleProxy)
     }
 
+    addUserForToken(token){
+        return this.#auth.setToken(token).then(SugoiAuthProvider.#getTwurpleProxy)
+    }
+
     removeUser(){
         return this.#auth.resetLocalToken()
     }
