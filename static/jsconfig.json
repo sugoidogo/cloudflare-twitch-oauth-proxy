@@ -1,0 +1,10 @@
+{
+    "compilerOptions": {
+        "module": "ESNext",
+        "target": "ESNext",
+        "checkJs": true,
+        "paths": {
+            "https://cdn.jsdelivr.net/npm/*/+esm":["../node_modules/*/es/index.mjs"]
+        }
+    }
+}
