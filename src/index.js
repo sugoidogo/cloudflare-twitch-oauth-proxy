@@ -4,6 +4,8 @@ import token_module from '../static/TwitchAuth.mjs'
 import twurple_module from '../static/SugoiAuthProvider.mjs'
 // @ts-ignore
 import code_html from '../static/code.html'
+// @ts-ignore
+import legacy_token_module from '../static/tba.mjs'
 
 /**
  * create a Response object with control headers set
@@ -17,6 +19,7 @@ function makeResponse(body=undefined,init=undefined){
 	if(!init.headers){
 		init.headers={}
 	}
+	init.headers['access-control-allow-headers']='content-type'
 	init.headers['access-control-allow-origin']='*'
 	init.headers['access-control-allow-private-network']='true'
 	init.headers['cache-control']='no-cache,private'
@@ -42,6 +45,12 @@ export default {
 		if(url.pathname==='/code.html'){
 			return makeResponse(code_html,{
 				headers:{'content-type':'text/html'}
+			})
+		}
+
+		if(url.pathname==='/tba.mjs'){
+			return makeResponse(legacy_token_module,{
+				headers:{'content-type':'text/javascript'}
 			})
 		}
 
