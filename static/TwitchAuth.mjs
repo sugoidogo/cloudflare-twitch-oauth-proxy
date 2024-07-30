@@ -185,6 +185,9 @@ export default class TwitchAuth {
         }
         scopes=scopes.join(' ').split(' ')
         for(const scope of scopes){
+            if(scope===' '){
+                continue
+            }
             if(!token.scope.includes(scope)){
                 console.debug('token is missing '+scope+', requesting new token')
                 return this.getNewToken(...scopes)
