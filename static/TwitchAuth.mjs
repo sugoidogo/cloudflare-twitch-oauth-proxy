@@ -183,6 +183,7 @@ export default class TwitchAuth {
             console.debug('no local token, requesting new token')
             return this.getNewToken(...scopes)
         }
+        scopes=scopes.join(' ').split(' ')
         for(const scope of scopes){
             if(!token.scope.includes(scope)){
                 console.debug('token is missing '+scope+', requesting new token')
