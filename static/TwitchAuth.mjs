@@ -185,7 +185,7 @@ export default class TwitchAuth {
         }
         scopes=scopes.join(' ').split(' ')
         for(const scope of scopes){
-            if(scope===' '){
+            if(scope===''){
                 continue
             }
             if(!token.scope.includes(scope)){
