@@ -111,7 +111,13 @@ export async function get_tokens(client_id,scope=null,redirect_uri=location.orig
         set_refresh_timeout(client_id,tokens)
         return set_local_tokens(client_id,tokens)
     })
-    .catch((error)=>{
+    .catch(async (error)=>{
+            if(error.message==="Failed to fetch"){
+                await new Promise(function(resolve,reject){
+                    setTimeout(resolve,1000)
+                })
+                return get_tokens(client_id,scope,redirect_uri,auth_return)
+            }
             if(scope){
                 request_auth(client_id,scope,redirect_uri)
             }else{
