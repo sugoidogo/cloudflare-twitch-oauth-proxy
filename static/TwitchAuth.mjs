@@ -15,6 +15,24 @@
  * @property {String} scope
  */
 
+/**
+ * @param {RequestInfo | URL} input
+ * @param {RequestInit} init
+ * @returns {Promise<Response>}
+ */
+function fetch(input,init=undefined){
+    return window.fetch(input,init).catch(async error=>{
+        if(error.message==="Failed to fetch"){
+            await new Promise(function(resolve,reject){
+                setTimeout(resolve,1000)
+            })
+            return fetch(input,init)
+        }else{
+            throw error
+        }
+    })
+}
+
 export default class TwitchAuth {
 
     static #redirect_uri=new URL('/code.html',import.meta.url)
