@@ -23,7 +23,7 @@ export function request_auth(client_id,scope,redirect_uri=location.origin+locati
     dialog.appendChild(okButton)
     const cancelButton=document.createElement('button')
     cancelButton.innerHTML='Cancel'
-    cancelButton.onclick=dialog.close
+    cancelButton.onclick=()=>dialog.close()
     dialog.appendChild(cancelButton)
     document.body.appendChild(dialog)
     dialog.showModal()
@@ -138,7 +138,7 @@ export async function get_tokens(client_id,scope=null,redirect_uri=location.orig
                 dialog.innerHTML=(document.title||location.origin+location.pathname)+' has been logged out of your twitch account<br>'
                 const okButton=document.createElement('button')
                 okButton.innerHTML='OK'
-                okButton.onclick=dialog.close
+                okButton.onclick=()=>dialog.close()
                 dialog.appendChild(okButton)
                 document.appendChild(dialog)
                 dialog.showModal()
