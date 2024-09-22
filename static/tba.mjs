@@ -134,7 +134,14 @@ export async function get_tokens(client_id,scope=null,redirect_uri=location.orig
             if(scope){
                 request_auth(client_id,scope,redirect_uri)
             }else{
-                alert((document.title||location.origin+location.pathname)+' has been logged out of your twitch account')
+                const dialog=document.createElement('dialog')
+                dialog.innerHTML=(document.title||location.origin+location.pathname)+' has been logged out of your twitch account<br>'
+                const okButton=document.createElement('button')
+                okButton.innerHTML='OK'
+                okButton.onclick=dialog.close
+                dialog.appendChild(okButton)
+                document.appendChild(dialog)
+                dialog.showModal()
                 localStorage.clear(client_id)
             }
             throw error
