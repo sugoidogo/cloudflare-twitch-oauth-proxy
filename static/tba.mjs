@@ -14,9 +14,22 @@ export function request_auth(client_id,scope,redirect_uri=location.origin+locati
         response_type:'code',
         scope:scope
     })
-    if(window.confirm((document.title||location.origin+location.pathname)+' redirecting you to twitch for authorization')){
-        location.assign(url.href+'&redirect_uri='+redirect_uri)
-    }
+    const dialog=document.createElement('dialog')
+    dialog.innerHTML='Redirecting you to Twitch for authorization<br>'
+    dialog.innerHTML+='If you see this multiple times, please report it as a bug<br>'
+    const okButton=document.createElement('button')
+    okButton.innerHTML='OK'
+    okButton.onclick=()=>location.assign(url.href+'&redirect_uri='+redirect_uri)
+    dialog.appendChild(okButton)
+    const cancelButton=document.createElement('button')
+    cancelButton.innerHTML='Cancel'
+    cancelButton.onclick=dialog.close
+    dialog.appendChild(cancelButton)
+    document.body.appendChild(dialog)
+    dialog.showModal()
+    //if(window.confirm((document.title||location.origin+location.pathname)+' redirecting you to twitch for authorization')){
+    //    location.assign(url.href+'&redirect_uri='+redirect_uri)
+    //}
 }
 
 export function get_url_params(){
