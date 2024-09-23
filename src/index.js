@@ -1,10 +1,6 @@
-// @ts-ignore
 import token_module from '../static/TwitchAuth.mjs'
-// @ts-ignore
 import twurple_module from '../static/SugoiAuthProvider.mjs'
-// @ts-ignore
 import code_html from '../static/code.html'
-// @ts-ignore
 import legacy_token_module from '../static/tba.mjs'
 
 /**
