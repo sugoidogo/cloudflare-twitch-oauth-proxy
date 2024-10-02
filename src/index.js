@@ -2,6 +2,7 @@ import token_module from '../static/TwitchAuth.mjs'
 import twurple_module from '../static/SugoiAuthProvider.mjs'
 import code_html from '../static/code.html'
 import legacy_token_module from '../static/tba.mjs'
+import { withSentry } from '@sentry/cloudflare'
 
 /**
  * create a Response object with control headers set
@@ -22,7 +23,9 @@ function makeResponse(body=undefined,init=undefined){
 	return new Response(body,init)
 }
 
-export default {
+export default withSentry(
+	env=>({dsn:"https://2054f019a05f4a88b5550fb2443d0d68@glitchtip.sugoidogo.com/1",environment:env.environment}),
+	{
 	/**
 	 * @param {Request} request 
 	 * @param {Object} env 
@@ -86,4 +89,4 @@ export default {
 			body:requestBody
 		})
 	},
-};
+});

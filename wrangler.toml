@@ -1,6 +1,8 @@
 name = "cloudflare-twitch-oauth-proxy"
 main = "src/index.js"
 compatibility_date = "2024-03-04"
+compatibility_flags = [ "nodejs_als" ]
+upload_source_maps = true
 rules = [
   { type = "Data", globs = ["../static/*"], fallthrough = true }
 ]
