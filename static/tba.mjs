@@ -140,7 +140,7 @@ export async function get_tokens(client_id,scope=null,redirect_uri=location.orig
                 okButton.innerHTML='OK'
                 okButton.onclick=()=>dialog.close()
                 dialog.appendChild(okButton)
-                document.appendChild(dialog)
+                document.body.appendChild(dialog)
                 dialog.showModal()
                 localStorage.clear(client_id)
             }
