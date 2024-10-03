@@ -2,7 +2,7 @@
 /** @param {Response} response */
 async function validateResponse(response){
     if(!response.ok){
-        throw new Error(response.code+' '+response.url+' '+await response.text())
+        throw new Error(response.status+' '+response.url+' '+await response.text())
     }
     return response
 }
