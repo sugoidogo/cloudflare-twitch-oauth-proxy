@@ -24,7 +24,7 @@ function makeResponse(body=undefined,init=undefined){
 }
 
 export default withSentry(
-	env=>({dsn:"https://2054f019a05f4a88b5550fb2443d0d68@glitchtip.sugoidogo.com/1",environment:env.environment}),
+	env=>({dsn:"https://1982d0155a1144f4a8c5bac6578572e7@app.glitchtip.com/8990",environment:env.environment}),
 	{
 	/**
 	 * @param {Request} request 
